@@ -1,7 +1,5 @@
 // Set up game
-let pieceCurrentPlayer;
-let piecePlayer1;
-let piecePlayer2;
+
 
 //selector element
 const body = document.querySelector('body');
@@ -50,7 +48,14 @@ boardGame();
     add btnID as parameter to get which col will be selected
     then show the current piece
 */
+
+
 function currentPiece (btnID){
+
+    let player1 = 'R';
+    let player2 = 'Y';  
+    let currentPlayer = player1;
+
     const selectedBtn = document.getElementById(btnID);
     //get the last number in the id of getBtnID object
     const lastID = selectedBtn.id.slice(-1);
@@ -58,18 +63,40 @@ function currentPiece (btnID){
     const colSelected = document.querySelectorAll(`.col-${lastID}`);
     console.log(`%c--col${lastID}--`,`color:yellow`);
     console.log(colSelected)
-    
-   for (let i = colSelected.length - 1; i >= 0 ; i--){
 
+    const rowSelected = document.querySelectorAll(`.row-${lastID}`);
+    console.log(`%c--row${lastID}--`,`color:yellow`);
+    console.log(rowSelected)
+
+
+    
+   for (let c = colSelected.length - 1; c >= 0 ; c--){
+        
         //check if element contains class Red or Yellow; iF not add class red or yellow and return
-        if (colSelected[i].classList.contains('red') || colSelected[i].classList.contains('yellow') ){
-            console.log("Y")    
+        if (colSelected[c].classList.contains('red')){
+            currentPlayer = player2;
+
+        } else if (colSelected[c].classList.contains('yellow') ){
+            currentPlayer = player1;
             
-        }else{
-            colSelected[i].classList.add('red')
-            break;
+        }else{  
+            // colSelected[i].classList.add('red');
+            // break;
+            if (currentPlayer === player1){
+                colSelected[c].classList.add('red');
+                console.log(colSelected[c].classList);
+                currentPlayer = player2;
+                break;
+                
+            }else{
+                colSelected[c].classList.add('yellow');
+                console.log(colSelected[c].classList)
+                currentPlayer = player1;
+                break;
+            }
+             
         }
-        console.log(i)
+       
    }
 
 }
@@ -82,10 +109,11 @@ buttons.forEach(button =>{
 
     button.addEventListener('click', function(event){
 
-        console.log(event.target.id);
         //When clicked the current piece will show on the board game
         //call function currentPiece 
-       currentPiece(event.target.id);
+        currentPiece(event.target.id);
+        console.log(event.target.id);
+        
     
     })
 })
