@@ -51,19 +51,26 @@ boardGame();
     then show the current piece
 */
 function currentPiece (btnID){
-    const getBtnID = document.getElementById(btnID);
+    const selectedBtn = document.getElementById(btnID);
+    //get the last number in the id of getBtnID object
+    const lastID = selectedBtn.id.slice(-1);
     
-    if(getBtnID.id === "button-0"){
-        console.log(`%c--getBtnID--`,`color:yellow`);
-        console.log(getBtnID)
-        const col0 = document.querySelectorAll('col-0');
-        console.log(`%c--col0--`,`color:yellow`);
-        console.log(col0);
-        col0.classList.add('red');
-        girdboardGame.appendChild(col0);
+    const colSelected = document.querySelectorAll(`.col-${lastID}`);
+    console.log(`%c--col${lastID}--`,`color:yellow`);
+    console.log(colSelected)
+    
+   for (let i = colSelected.length - 1; i >= 0 ; i--){
 
-    }
-   
+        //check if element contains class Red or Yellow; iF not add class red or yellow and return
+        if (colSelected[i].classList.contains('red') || colSelected[i].classList.contains('yellow') ){
+            console.log("Y")    
+            
+        }else{
+            colSelected[i].classList.add('red')
+            break;
+        }
+        console.log(i)
+   }
 
 }
 
