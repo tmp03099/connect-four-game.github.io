@@ -1,10 +1,14 @@
 // Set up game
-
+//declare and assign variable for player
+const player1 = 'red';
+const player2 = 'yellow';  
+let currentPlayer = player1;
 
 //selector element
 const body = document.querySelector('body');
 const girdboardGame = document.getElementById('grid-board-game');
 const board = document.querySelectorAll('board');
+
 
 //create top board game to user control
 function topBoardGame(){
@@ -48,15 +52,11 @@ boardGame();
     add btnID as parameter to get which col will be selected
     then show the current piece
 */
+function putPiece (btnID){
 
-
-function currentPiece (btnID){
-
-    let player1 = 'R';
-    let player2 = 'Y';  
-    let currentPlayer = player1;
-
+    //select query button from buttonID parameter
     const selectedBtn = document.getElementById(btnID);
+
     //get the last number in the id of getBtnID object
     const lastID = selectedBtn.id.slice(-1);
     
@@ -64,40 +64,21 @@ function currentPiece (btnID){
     console.log(`%c--col${lastID}--`,`color:yellow`);
     console.log(colSelected)
 
-    const rowSelected = document.querySelectorAll(`.row-${lastID}`);
-    console.log(`%c--row${lastID}--`,`color:yellow`);
-    console.log(rowSelected)
+    for (let c = colSelected.length - 1; c >= 0 ; c--){
 
-
-    
-   for (let c = colSelected.length - 1; c >= 0 ; c--){
-        
-        //check if element contains class Red or Yellow; iF not add class red or yellow and return
-        if (colSelected[c].classList.contains('red')){
-            currentPlayer = player2;
-
-        } else if (colSelected[c].classList.contains('yellow') ){
-            currentPlayer = player1;
-            
-        }else{  
-            // colSelected[i].classList.add('red');
-            // break;
-            if (currentPlayer === player1){
-                colSelected[c].classList.add('red');
-                console.log(colSelected[c].classList);
-                currentPlayer = player2;
-                break;
-                
-            }else{
-                colSelected[c].classList.add('yellow');
-                console.log(colSelected[c].classList)
-                currentPlayer = player1;
-                break;
-            }
-             
+        if (colSelected[c].classList.contains('red') || colSelected[c].classList.contains('yellow') ){
+            console.log(`slot ${c} filled`)
+        }else{
+            colSelected[c].classList.add(currentPlayer);
+            break;
         }
-       
-   }
+    }
+
+    if (currentPlayer === player1){
+        currentPlayer = player2;
+    }else{
+        currentPlayer = player1;
+    }
 
 }
 
@@ -111,9 +92,9 @@ buttons.forEach(button =>{
 
         //When clicked the current piece will show on the board game
         //call function currentPiece 
-        currentPiece(event.target.id);
+        putPiece(event.target.id);
         console.log(event.target.id);
         
-    
+
     })
 })
