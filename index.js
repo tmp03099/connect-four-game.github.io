@@ -82,16 +82,21 @@ function putPiece (btnID){
     //get all spots for column number
     const colSelected = document.querySelectorAll(`.col-${colNum}`);
     console.log(`%c--col${colNum}--`,`color:yellow`);
-    console.log(colSelected)
+    console.log(colSelected);
+
+    let c = colSelected.length - 1;
 
     //loop from botton to top to check where to put the piece
-    for (let c = colSelected.length - 1; c >= 0 ; c--){
+    for (c = colSelected.length - 1; c >= 0 ; c--){
 
         if (colSelected[c].classList.contains('red') || colSelected[c].classList.contains('yellow') ){
             console.log(`slot ${c} filled`)
 
         }else{
             colSelected[c].classList.add(currentPlayer);
+            console.log(currentPlayer,"orgin");
+            //call the checkWinner function before check the current player and change it
+            checkWinner(colSelected, c);
             if (currentPlayer === player1){
                 currentPlayer = player2;
             }else{
@@ -100,20 +105,19 @@ function putPiece (btnID){
             break;
         }
     }
-    checkWinner(colSelected)
     
 }
 
 let total = 0;
 //Check winner
-function checkWinner(getId){
+function checkWinner(getId, c){
     //vertical
-    for( let c = getId.length - 1  ; c >= 0; c --){
-        if(getId[c].classList.contains('red')){
+    for( let i = getId.length - 1  ; i >= 0; i --){
+        if(getId[i].classList.contains(currentPlayer)){
             total += 1;
+            console.log(total,currentPlayer)
             if (total === 4){
-                setWinner()
-
+                setWinner();
                 break;
             }
         }else{
@@ -122,7 +126,24 @@ function checkWinner(getId){
     }
 
     //horizontal
+    const allRows = document.querySelectorAll(`.row-${c}`); // c is row number
+    for (let r = 0; r < allRows.length ; r++){
+        if(allRows[r].classList.contains('red')){
+            total += 1;
+            if (total === 4){
+                setWinner();
+                break;
+            }
+        }else{
+            total = 0 ;
+        }
+    }
+
+    //diagonal
     
+
+
+
 }
 
 function setWinner(){
