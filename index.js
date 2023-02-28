@@ -84,19 +84,19 @@ function putPiece (btnID){
     console.log(`%c--col${colNum}--`,`color:yellow`);
     console.log(colSelected);
 
-    let c = colSelected.length - 1;
+    let r = colSelected.length - 1;
 
     //loop from botton to top to check where to put the piece
-    for (c = colSelected.length - 1; c >= 0 ; c--){
+    for (r = colSelected.length - 1; r >= 0 ; r--){
 
-        if (colSelected[c].classList.contains('red') || colSelected[c].classList.contains('yellow') ){
-            console.log(`slot ${c} filled`)
+        if (colSelected[r].classList.contains('red') || colSelected[r].classList.contains('yellow') ){
+            console.log(`slot ${r} filled`)
 
         }else{
-            colSelected[c].classList.add(currentPlayer);
+            colSelected[r].classList.add(currentPlayer);
             console.log(currentPlayer,"orgin");
             //call the checkWinner function before check the current player and change it
-            checkWinner(colSelected, c);
+            checkWinner(colNum, r);
             if (currentPlayer === player1){
                 currentPlayer = player2;
             }else{
@@ -110,10 +110,12 @@ function putPiece (btnID){
 
 let total = 0;
 //Check winner
-function checkWinner(getId, c){
+function checkWinner(colNum, rolNum){
+
     //vertical
-    for( let i = getId.length - 1  ; i >= 0; i --){
-        if(getId[i].classList.contains(currentPlayer)){
+    const allColumns = document.querySelectorAll(`.col-${colNum}`);
+    for( let i = allColumns.length - 1  ; i >= 0; i --){
+        if(allColumns[i].classList.contains(currentPlayer)){
             total += 1;
             console.log(total,currentPlayer)
             if (total === 4){
@@ -126,7 +128,8 @@ function checkWinner(getId, c){
     }
 
     //horizontal
-    const allRows = document.querySelectorAll(`.row-${c}`); // c is row number
+    const allRows = document.querySelectorAll(`.row-${rolNum}`); // c is row number
+    console.log(allRows)
     for (let r = 0; r < allRows.length ; r++){
         if(allRows[r].classList.contains('red')){
             total += 1;
@@ -140,9 +143,17 @@ function checkWinner(getId, c){
     }
 
     //diagonal
-    
+    let r = rolNum;
+    let c = Number(colNum);
+    for( let i = 0; i< allColumns.length; i++){
+        r = r - 1;
+        c = c + 1;
+        console.log(r, c);
+        const diagonal = document.querySelector(`.row-${r}.col-${c}`);
+        console.log(diagonal);
+        
 
-
+    }
 
 }
 
