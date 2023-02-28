@@ -8,6 +8,7 @@ let currentPlayer = player1;
 const body = document.querySelector('body');
 const girdboardGame = document.getElementById('grid-board-game');
 const board = document.querySelectorAll('board');
+const winner = document.getElementById('winner');
 
 //create board game
 //For each row create 7 columns to get the match column id
@@ -99,8 +100,36 @@ function putPiece (btnID){
             break;
         }
     }
+    checkWinner(colSelected)
+    
+}
 
+let total = 0;
+//Check winner
+function checkWinner(getId){
+    //vertical
+    for( let c = getId.length - 1  ; c >= 0; c --){
+        if(getId[c].classList.contains('red')){
+            total += 1;
+            if (total === 4){
+                setWinner()
 
+                break;
+            }
+        }else{
+            total = 0 ;
+        }
+    }
+
+    //horizontal
+    
+}
+
+function setWinner(){
+    winner.textContent = (`${currentPlayer} WIN`);
+    buttons.forEach(btn =>{
+        btn.disabled = true;
+    })
 }
 
 

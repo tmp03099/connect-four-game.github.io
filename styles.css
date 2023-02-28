@@ -2,26 +2,24 @@
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto;
     background-color: #2196F3;
-    padding: 10px;
-    gap: 50px;
-    width: 730px;
+    padding: 7px;
+    gap: 30px;
 }
 
 .top-board{
-  display: grid;
+  display: flex;
   background-color: #2196F3;
   padding: 10px;
-  gap: 50px;
   padding: 20px;
   font-size: 30px;
   text-align: center;
 }
 
 .board {
+  display: flex;
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(12, 12, 12, 0.8);
   padding: 20px;
-  font-size: 30px;
   text-align: center;
   border-radius: 100%;
 }
