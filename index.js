@@ -116,9 +116,9 @@ let total = 0;
 /*
     Check winner function to check who is winner
     Input: colNum as a column number of current piece (last played piece)
-           rolNum as a row number of current piece
+           rowNum as a row number of current piece
 */
-function checkWinner(colNum, rolNum){
+function checkWinner(colNum, rowNum){
 
     // TODO vertical
     //get list element from the column number 
@@ -140,7 +140,7 @@ function checkWinner(colNum, rolNum){
 
     //TODO horizontal
     //get list element from the row number
-    const allRows = document.querySelectorAll(`.row-${rolNum}`); // c is row number
+    const allRows = document.querySelectorAll(`.row-${rowNum}`); // c is row number
     console.log(allRows)
 
     //loop each element to check 4 peices are matching color is win
@@ -157,35 +157,58 @@ function checkWinner(colNum, rolNum){
     }
 
     //TODO diagonal - bottom left to top right
+    // * SAME ARRAY WITH DIFFERENT DIRECTIONS
+    //assign empty new array
+    let diagonalArray =  [];
+
     //assign new variable to keep row and column number of current piece.
-    let row = rolNum; //5
+    let row = rowNum; //5
     let col = Number(colNum); // 0
 
     //find the most bottom left cordinate (the first peice)
     while (row < 5 && col > 0){
-        row = row + 1;
-        col = col - 1;
-        console.log(row,col);
+        row += 1;
+        col -= 1;
     }
-    console.log(`%c--first peice--`,`color:yellow`);
-    console.log("row:", row ,"col:", col);
-    
-    let firstPiece = document.querySelector(`.row-${row}.col-${col}`);
-    
-    let diagonalArray =  [];
-    // diagonalArray.push(firstPiece)
 
+    //get the first piece element with row and column class
+    let firstPiece = document.querySelector(`.row-${row}.col-${col}`);
+    console.log(`%c--first diagonal peice--`,`color:yellow`);
+    console.log(firstPiece)
+
+    // get list of element for diagonal line without null element
     while (firstPiece != null){
         diagonalArray.push(firstPiece)
-        row = row - 1;
-        col = col + 1;
-        console.log(row, col);
-
+        row -= 1;
+        col += 1;
         firstPiece = document.querySelector(`.row-${row}.col-${col}`);
     }
-    console.log(`%c--diagonal Array--`,`color:yellow`);
-    console.log(diagonalArray);
 
+    //TODO anti diagonal - bottom right to top left
+    //assign new variable to keep row and column number of current piece.
+    let antiRow = rowNum
+    let antiCol = Number(colNum)
+
+    //find the most bottom right to top left cordinate ( the first anti diagonal peice)
+    while( antiRow < 5 && antiCol < 6){
+        antiRow += 1;
+        antiCol += 1;
+    }
+
+    //get the first anti diagonal piece element with row and column class
+    let firstAntiDiagonalPiece = document.querySelector(`.row-${antiRow}.col-${antiCol}`);
+    console.log(`%c--anti first peice--`,`color:yellow`);
+    console.log(firstAntiDiagonalPiece)
+
+    // get list of element for anti diagonal line without null element
+    while(firstAntiDiagonalPiece != null){
+        diagonalArray.push(firstAntiDiagonalPiece);
+        antiRow -= 1;
+        antiCol -= 1;
+        firstAntiDiagonalPiece = document.querySelector(`.row-${antiRow}.col-${antiCol}`);
+    }
+
+    //* CHECK WINNER FOR BOTH DIRECTIONS
     for( let i = 0 ; i < diagonalArray.length ; i ++){
         if(diagonalArray[i].classList.contains(currentPlayer)){
             total += 1;
@@ -197,19 +220,11 @@ function checkWinner(colNum, rolNum){
             total = 0 ;
         }
     }
-    
-    
-    
-
-
-
-
-    
 
 }
 
 function setWinner(){
-    winner.textContent = (`${currentPlayer} PLAYER WINS`);
+    winner.textContent = (`${currentPlayer.toUpperCase()} PLAYER WINS`);
     buttons.forEach(btn =>{
         btn.disabled = true;
     })
