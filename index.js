@@ -38,6 +38,9 @@ function topBoardGame(){
         btn.classList.add('select-button');
         btn.id = `button-${i}`;
         divOnTop.appendChild(btn);
+        // const icon = document.createElement('i');
+        // icon.classList.add(`fas fa-arrow-alt-circle-down`);
+        // btn.appendChild(icon);
         girdboardGame.appendChild(divOnTop)
     }
 }
@@ -117,7 +120,7 @@ let total = 0;
 */
 function checkWinner(colNum, rolNum){
 
-    //vertical
+    // TODO vertical
     //get list element from the column number 
     const allColumns = document.querySelectorAll(`.col-${colNum}`);
 
@@ -135,7 +138,7 @@ function checkWinner(colNum, rolNum){
         }
     }
 
-    //horizontal
+    //TODO horizontal
     //get list element from the row number
     const allRows = document.querySelectorAll(`.row-${rolNum}`); // c is row number
     console.log(allRows)
@@ -153,28 +156,60 @@ function checkWinner(colNum, rolNum){
         }
     }
 
-    //diagonal
-    let r = rolNum; //5
-    let c = Number(colNum); // 0
-    while (r < 5 && c > 0){
-        r = r + 1;
-        c = c - 1;
-        console.log(r,c);
-    }
-    console.log("pass", r,c)
+    //TODO diagonal - bottom left to top right
+    //assign new variable to keep row and column number of current piece.
+    let row = rolNum; //5
+    let col = Number(colNum); // 0
 
-    while(r > 0){
-        r = r - 1;
-        c = c + 1;
-        console.log(r, c);
-        const diagonal = document.querySelector(`.row-${r}.col-${c}`);
-        console.log(diagonal);
+    //find the most bottom left cordinate (the first peice)
+    while (row < 5 && col > 0){
+        row = row + 1;
+        col = col - 1;
+        console.log(row,col);
     }
+    console.log(`%c--first peice--`,`color:yellow`);
+    console.log("row:", row ,"col:", col);
+    
+    let firstPiece = document.querySelector(`.row-${row}.col-${col}`);
+    
+    let diagonalArray =  [];
+    // diagonalArray.push(firstPiece)
+
+    while (firstPiece != null){
+        diagonalArray.push(firstPiece)
+        row = row - 1;
+        col = col + 1;
+        console.log(row, col);
+
+        firstPiece = document.querySelector(`.row-${row}.col-${col}`);
+    }
+    console.log(`%c--diagonal Array--`,`color:yellow`);
+    console.log(diagonalArray);
+
+    for( let i = 0 ; i < diagonalArray.length ; i ++){
+        if(diagonalArray[i].classList.contains(currentPlayer)){
+            total += 1;
+            if (total === 4){
+                setWinner();
+                break;
+            }
+        }else{
+            total = 0 ;
+        }
+    }
+    
+    
+    
+
+
+
+
+    
 
 }
 
 function setWinner(){
-    winner.textContent = (`${currentPlayer} WIN`);
+    winner.textContent = (`${currentPlayer} PLAYER WINS`);
     buttons.forEach(btn =>{
         btn.disabled = true;
     })
