@@ -13,6 +13,7 @@ h1{
 }
 
 p{
+  font-family: 'Tilt Neon';
   font-size: 1.3em;
   line-height: 2em;
   padding: 0 10%;
@@ -60,8 +61,8 @@ i {
   background-color:red;
 }
 
-.yellow{
-  background-color: yellow;
+.blue{
+  background-color: blue;
 }
 
 #winner{
@@ -73,14 +74,22 @@ i {
 }
 
 #reset{
+  font-family: 'Silkscreen';
   background-color: aqua;
   padding: 15px;
   border: none;
   border-radius: 50px;
   font-size: 20px;
-  margin: 3% 15%;
+  margin: 2% 5%;
   color: #16212a;
   font-weight: bold;
+}
+
+#reset-btn{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 600px){

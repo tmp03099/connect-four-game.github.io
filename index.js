@@ -1,8 +1,18 @@
 // Set up game
 //declare and assign variable for player
 const player1 = 'red';
-const player2 = 'yellow';  
+const player2 = 'blue';
+
 let currentPlayer = player1;
+// const color = document.querySelectorAll('.color');
+// color.forEach(item =>{
+//     item.addEventListener('click', function(event){
+//         event.target.classList[0] = currentPlayer;
+//         return currentPlayer
+//         console.log(currentPlayer)
+//     })
+// })
+
 
 //selector element
 const body = document.querySelector('body');
@@ -60,9 +70,8 @@ buttons.forEach(button =>{
         console.log(this.id)
         putPiece(this.id);
         
-
     });
-    button.addEventListener('mouseover',function(){ 
+    button.addEventListener('mouseup',function(){ 
 
         button.animate([
             //keyframes
@@ -74,11 +83,9 @@ buttons.forEach(button =>{
             iterations: 1,
         }
         )
+        
     });
 
-    
-
-    
 })
 
 
@@ -106,15 +113,18 @@ function putPiece (btnID){
     //loop from botton to top to check where to put the piece
     for (rowNum ; rowNum >= 0 ; rowNum--){
 
-        if (!colSelected[rowNum].classList.contains('red') && !colSelected[rowNum].classList.contains('yellow') ){
+        if (!colSelected[rowNum].classList.contains('red') && !colSelected[rowNum].classList.contains('blue') ){
             colSelected[rowNum].classList.add(currentPlayer);
             console.log(currentPlayer,"orgin");
             //call the checkWinner function to check winner and change the currentplayer
             checkWinner(colNum, rowNum);
             if (currentPlayer === player1){
                 currentPlayer = player2;
+                nextPlayer(currentPlayer);
+
             }else{
                 currentPlayer = player1;
+                nextPlayer(currentPlayer);
             }
             break;
         }
@@ -229,7 +239,7 @@ function checkFullBoard(){
     let totalCheck = 0;
     const fullBoard = document.querySelectorAll('.board');
     fullBoard.forEach(item =>{
-        if (item.classList.contains('red') || item.classList.contains('yellow')){
+        if (item.classList.contains('red') || item.classList.contains('blue')){
             totalCheck ++;
             if (totalCheck === 42){
                 winner.textContent= 'NO ONE WINS';
@@ -240,11 +250,11 @@ function checkFullBoard(){
 }
 
 
-//get the reset button
+//set the reset button will remove class, turn on btn
 function resetButton(){
    const board = document.querySelectorAll('.board');
    board.forEach(item =>{
-        item.classList.remove('red','yellow');
+        item.classList.remove('red','blue');
    });
    buttons.forEach(btn =>{
         btn.disabled = false;
@@ -252,5 +262,16 @@ function resetButton(){
    winner.textContent = '';
 }
 
+//add event for button
 const resetBtn = document.getElementById('reset');
 resetBtn.addEventListener('click' , resetButton );
+
+
+//show who is next player
+function nextPlayer(nextPlayer){
+    const getPlayer = document.getElementById('nextPlayer');
+    getPlayer.textContent = (`NEXT PLAYER: ${nextPlayer.toUpperCase()}`);
+    getPlayer.style.fontFamily = 'Silkscreen';
+    getPlayer.style.fontSize = '20px';
+    getPlayer.style.padding = '2% 5%';
+}
