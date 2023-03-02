@@ -52,14 +52,33 @@ const buttons = document.querySelectorAll('.select-button');
 
 //loop button and addEventListener for click event 
 buttons.forEach(button =>{
-    console.log(button)
+
     button.addEventListener('click', function(){
 
         //When clicked the current piece will show on the board game
         //call function currentPiece 
-        console.log(this)
+        console.log(this.id)
         putPiece(this.id);
-    })
+        
+
+    });
+    button.addEventListener('mouseover',function(){ 
+
+        button.animate([
+            //keyframes
+            {transform: "translateY(0px)"},
+            {transform: "translateY(300px)"},
+        ],
+        {
+            duration:1000,
+            iterations: 1,
+        }
+        )
+    });
+
+    
+
+    
 })
 
 
@@ -78,6 +97,7 @@ function putPiece (btnID){
     
     //get all spots for column number
     const colSelected = document.querySelectorAll(`.col-${colNum}`);
+    
     console.log(`%c--col${colNum}--`,`color:yellow`);
     console.log(colSelected);
 
@@ -211,7 +231,6 @@ function checkFullBoard(){
     fullBoard.forEach(item =>{
         if (item.classList.contains('red') || item.classList.contains('yellow')){
             totalCheck ++;
-            console.log(totalCheck, "T")
             if (totalCheck === 42){
                 winner.textContent= 'NO ONE WINS';
             }
