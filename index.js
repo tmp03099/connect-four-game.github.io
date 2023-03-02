@@ -36,11 +36,9 @@ function topBoardGame(){
         //add button to select
         const btn = document.createElement('button');
         btn.classList.add('select-button');
+        // btn.innerHTML += '<i class="fa-solid fa-circle-arrow-down"></i>';
         btn.id = `button-${i}`;
         divOnTop.appendChild(btn);
-        // const icon = document.createElement('i');
-        // icon.classList.add(`fas fa-arrow-alt-circle-down`);
-        // btn.appendChild(icon);
         girdboardGame.appendChild(divOnTop)
     }
 }
@@ -156,6 +154,8 @@ function checkWinner(colNum, rowNum){
         }
     }
 
+
+
     //TODO diagonal - bottom left to top right
     // * SAME ARRAY WITH DIFFERENT DIRECTIONS
     //assign empty new array
@@ -183,6 +183,8 @@ function checkWinner(colNum, rowNum){
         col += 1;
         firstPiece = document.querySelector(`.row-${row}.col-${col}`);
     }
+
+
 
     //TODO anti diagonal - bottom right to top left
     //assign new variable to keep row and column number of current piece.
@@ -230,4 +232,13 @@ function setWinner(){
     })
 }
 
+    
+//get the reset button
+function resetButton(){
+   
+    console.log('remove')
+}
+
+const resetBtn = document.getElementById('reset');
+resetBtn.addEventListener('click' , resetButton );
 

@@ -1,29 +1,35 @@
-#grid-board-game {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto;
-    background-color: #2196F3;
-    padding: 7px;
-    gap: 30px;
+/* Mobile first */
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.top-board{
-  display: flex;
-  background-color: #2196F3;
+h1{
+  font-family: 'Press Start 2P';
+  font-size: 1.2rem;
+  color: #343434;
+}
+
+#grid-board-game {
+  display: grid;
+  grid-template-columns: 7vw 7vw 7vw 7vw 7vw 7vw 7vw ;
+  justify-content: center;
+  background-color: #0e1c26;
   padding: 10px;
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
+  column-gap: 10px;
+  row-gap: 20px;
+  width: 100vw;
+  height: 40vh;
 }
 
 .board {
   display: flex;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(12, 12, 12, 0.8);
-  padding: 20px;
+  padding: 2vw;
   text-align: center;
   border-radius: 100%;
 }
-
 
 .red{
   background-color:red;
@@ -32,3 +38,69 @@
 .yellow{
   background-color: yellow;
 }
+
+#winner{
+  font-family: 'Rubik Iso';
+  font-size: 2rem;
+  color: orangered;
+  padding: 20px;
+  font-weight: bolder;
+}
+
+@media only screen and (min-width: 600px){
+  h1{
+    font-size: 2rem;
+  }
+
+  #grid-board-game{
+    column-gap: 30px;
+    row-gap: 25px;
+    grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw ;
+    height: auto;
+  }
+
+  .board{
+    padding: 3.3vw;
+  }
+}
+
+@media only screen and (min-width: 992px){
+  h1{
+    font-size: 3rem;
+  }
+
+  #grid-board-game{
+    column-gap: 50px;
+    row-gap: 30px;
+    grid-template-columns: 3vw 3vw 3vw 3vw 3vw 3vw 3vw ;
+  }
+
+  .board{
+    padding: 2.8vw;
+  }
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+  #grid-board-game{
+    column-gap: 55px;
+    row-gap: 35px;
+    /* grid-template-columns: 3vw 3vw 3vw 3vw 3vw 3vw 3vw ; */
+    
+    grid-template-columns: 2vw 2vw 2vw 2vw 2vw 2vw 2vw ;
+  }
+
+  .board{
+    padding: 2vw;
+  }
+
+  #winner{
+    font-size: xxx-large;
+  }
+}
+
+
+
+
+
