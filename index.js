@@ -7,7 +7,6 @@ let currentPlayer = player1;
 //selector element
 const body = document.querySelector('body');
 const girdboardGame = document.getElementById('grid-board-game');
-const board = document.querySelectorAll('board');
 const winner = document.getElementById('winner');
 
 //create board game
@@ -232,13 +231,16 @@ function setWinner(){
     })
 }
 
-    
+
 //get the reset button
 function resetButton(){
-   
+   const board = document.querySelectorAll('.board');
+   console.log(board)
+   board.forEach(item =>{
+    item.classList.remove('red','yellow');
+   })
     console.log('remove')
 }
 
 const resetBtn = document.getElementById('reset');
 resetBtn.addEventListener('click' , resetButton );
-
