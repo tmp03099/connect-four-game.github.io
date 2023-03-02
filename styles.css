@@ -75,6 +75,10 @@ i {
   .board{
     padding: 3vw;
   }
+
+  #winner{
+    font-size: 3rem;
+  }
 }
 
 @media only screen and (min-width: 992px){
@@ -104,7 +108,7 @@ i {
   }
 
   #winner{
-    font-size: xxx-large;
+    font-size: 3.5rem ;
   }
 }
 

@@ -42,7 +42,6 @@ function topBoardGame(){
     }
 }
 
-
 //call function
 body.appendChild(girdboardGame);
 topBoardGame();
@@ -54,14 +53,12 @@ const buttons = document.querySelectorAll('.select-button');
 //loop button and addEventListener for click event 
 buttons.forEach(button =>{
     console.log(button)
-    button.addEventListener('click', function(event){
+    button.addEventListener('click', function(){
 
         //When clicked the current piece will show on the board game
         //call function currentPiece 
         console.log(this)
         putPiece(this.id);
-        
-        
     })
 })
 
@@ -75,8 +72,6 @@ function putPiece (btnID){
 
     //select element by ID with buttonID parameter
     const selectedBtn = document.getElementById(btnID);
-    console.log(`%c--button selected--`,`color:yellow`);
-    console.log(selectedBtn.id);
 
     //get the last character in the id of selectedBtn.  This is the column number 
     const colNum = selectedBtn.id.slice(-1);
@@ -86,19 +81,16 @@ function putPiece (btnID){
     console.log(`%c--col${colNum}--`,`color:yellow`);
     console.log(colSelected);
 
-    let r = colSelected.length - 1;
+    let rowNum = colSelected.length - 1;
 
     //loop from botton to top to check where to put the piece
-    for (r = colSelected.length - 1; r >= 0 ; r--){
+    for (rowNum ; rowNum >= 0 ; rowNum--){
 
-        if (colSelected[r].classList.contains('red') || colSelected[r].classList.contains('yellow') ){
-            console.log(`slot ${r} filled`)
-
-        }else{
-            colSelected[r].classList.add(currentPlayer);
+        if (!colSelected[rowNum].classList.contains('red') && !colSelected[rowNum].classList.contains('yellow') ){
+            colSelected[rowNum].classList.add(currentPlayer);
             console.log(currentPlayer,"orgin");
             //call the checkWinner function to check winner and change the currentplayer
-            checkWinner(colNum, r);
+            checkWinner(colNum, rowNum);
             if (currentPlayer === player1){
                 currentPlayer = player2;
             }else{
@@ -110,7 +102,7 @@ function putPiece (btnID){
     
 }
 
-let total = 0;
+
 /*
     Check winner function to check who is winner
     Input: colNum as a column number of current piece (last played piece)
@@ -121,46 +113,16 @@ function checkWinner(colNum, rowNum){
     // TODO vertical
     //get list element from the column number 
     const allColumns = document.querySelectorAll(`.col-${colNum}`);
-
-    total = 0
-    //loop each element to check 4 pieces are matching color is win
-    for( let i = allColumns.length - 1  ; i >= 0; i --){
-        if(allColumns[i].classList.contains(currentPlayer)){
-            total ++;
-            console.log(total,currentPlayer)
-            if (total === 4){
-                setWinner();
-                break;
-            }else{
-                checkFullBoard();
-            }
-        }else{
-            total = 0 ;
-        }
-    }
+    checkMatchingColor(allColumns)
 
     //TODO horizontal
     //get list element from the row number
     const allRows = document.querySelectorAll(`.row-${rowNum}`); // c is row number
-    console.log(allRows)
-
-    total = 0
-    //loop each element to check 4 peices are matching color is win
-    for (let r = 0; r < allRows.length ; r++){
-        if(allRows[r].classList.contains(currentPlayer)){
-            total ++ ;
-            if (total === 4){
-                setWinner();
-                break;
-            }
-        }else{
-            total = 0 ;
-        }
-    }
-
+    checkMatchingColor(allRows)
+    
+   
 
     //TODO diagonal - bottom left to top right
-    // * SAME ARRAY WITH DIFFERENT DIRECTIONS
     //assign empty new array
     let diagonalArray =  [];
 
@@ -186,22 +148,12 @@ function checkWinner(colNum, rowNum){
         col ++;
         firstPiece = document.querySelector(`.row-${row}.col-${col}`);
     }
-
-
-    total = 0
-    for( let i = 0 ; i < diagonalArray.length ; i ++){
-        if(diagonalArray[i].classList.contains(currentPlayer)){
-            total ++;
-            if (total === 4){
-                setWinner();
-                break;
-            }
-        }else{
-            total = 0 ;
-        }
-    }
+    checkMatchingColor(diagonalArray)
 
     //TODO anti diagonal - bottom right to top left
+    //assign new array
+    const antiDiagonalArray =  [];
+
     //assign new variable to keep row and column number of current piece.
     let antiRow = rowNum
     let antiCol = Number(colNum)
@@ -217,7 +169,6 @@ function checkWinner(colNum, rowNum){
     console.log(`%c--anti first peice--`,`color:yellow`);
     console.log(firstAntiDiagonalPiece)
 
-    const antiDiagonalArray =  [];
     // get list of element for anti diagonal line without null element
     while(firstAntiDiagonalPiece != null){
         antiDiagonalArray.push(firstAntiDiagonalPiece);
@@ -225,20 +176,7 @@ function checkWinner(colNum, rowNum){
         antiCol --;
         firstAntiDiagonalPiece = document.querySelector(`.row-${antiRow}.col-${antiCol}`);
     }
-
-    
-    total = 0
-    for( let i = 0 ; i < antiDiagonalArray.length ; i ++){
-        if(antiDiagonalArray[i].classList.contains(currentPlayer)){
-            total ++;
-            if (total === 4){
-                setWinner();
-                break;
-            }
-        }else{
-            total = 0 ;
-        }
-    }
+    checkMatchingColor(antiDiagonalArray);
 }
 
 function setWinner(){
@@ -246,6 +184,24 @@ function setWinner(){
     buttons.forEach(btn =>{
         btn.disabled = true;
     })
+}
+
+function checkMatchingColor(arrList){
+    let total = 0;
+    //loop each element to check 4 peices are matching color is win
+    for( let i = 0 ; i < arrList.length ; i ++){
+        if(arrList[i].classList.contains(currentPlayer)){
+            total ++;
+            if (total === 4){
+                setWinner();
+                break;
+            }else{
+                checkFullBoard();
+            }
+        }else{
+            total = 0 ;
+        }
+    }
 }
 
 //check fullBoard
