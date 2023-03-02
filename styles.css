@@ -15,20 +15,35 @@ h1{
   display: grid;
   grid-template-columns: 7vw 7vw 7vw 7vw 7vw 7vw 7vw ;
   justify-content: center;
+  align-items: center;
   background-color: #0e1c26;
-  padding: 10px;
-  column-gap: 10px;
-  row-gap: 20px;
   width: 100vw;
-  height: 40vh;
+  gap: 10px;
+  padding: 20px;
+  height: auto;
 }
 
 .board {
   display: flex;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 2vw;
+  padding: 4vw;
   text-align: center;
   border-radius: 100%;
+}
+
+.top-board{
+  display: flex;
+  justify-content: center;
+}
+
+.select-button{
+  background: none;
+  border: none;
+}
+
+i {
+  font-size: 1.2rem;
+  color: whitesmoke;
 }
 
 .red{
@@ -53,14 +68,12 @@ h1{
   }
 
   #grid-board-game{
-    column-gap: 30px;
-    row-gap: 25px;
-    grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw ;
+    grid-template-columns: 6vw 6vw 6vw 6vw 6vw 6vw 6vw ;
     height: auto;
   }
 
   .board{
-    padding: 3.3vw;
+    padding: 3vw;
   }
 }
 
@@ -70,13 +83,11 @@ h1{
   }
 
   #grid-board-game{
-    column-gap: 50px;
-    row-gap: 30px;
-    grid-template-columns: 3vw 3vw 3vw 3vw 3vw 3vw 3vw ;
+    grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw ;
   }
 
   .board{
-    padding: 2.8vw;
+    padding: 2.5vw;
   }
 }
 
@@ -84,11 +95,8 @@ h1{
 @media only screen and (min-width: 1200px) {
 
   #grid-board-game{
-    column-gap: 55px;
-    row-gap: 35px;
-    /* grid-template-columns: 3vw 3vw 3vw 3vw 3vw 3vw 3vw ; */
-    
-    grid-template-columns: 2vw 2vw 2vw 2vw 2vw 2vw 2vw ;
+    grid-template-columns: 4vw 4vw 4vw 4vw 4vw 4vw 4vw ;
+    gap: 25px;
   }
 
   .board{

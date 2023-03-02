@@ -35,7 +35,7 @@ function topBoardGame(){
         //add button to select
         const btn = document.createElement('button');
         btn.classList.add('select-button');
-        // btn.innerHTML += '<i class="fa-solid fa-circle-arrow-down"></i>';
+        btn.innerHTML = '<i class="fa-solid fa-circle-arrow-down"></i>';
         btn.id = `button-${i}`;
         divOnTop.appendChild(btn);
         girdboardGame.appendChild(divOnTop)
@@ -53,12 +53,13 @@ const buttons = document.querySelectorAll('.select-button');
 
 //loop button and addEventListener for click event 
 buttons.forEach(button =>{
-
+    console.log(button)
     button.addEventListener('click', function(event){
 
         //When clicked the current piece will show on the board game
         //call function currentPiece 
-        putPiece(event.target.id);
+        console.log(this)
+        putPiece(this.id);
         
         
     })
