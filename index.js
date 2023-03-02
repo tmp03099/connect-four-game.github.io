@@ -122,14 +122,17 @@ function checkWinner(colNum, rowNum){
     //get list element from the column number 
     const allColumns = document.querySelectorAll(`.col-${colNum}`);
 
+    total = 0
     //loop each element to check 4 pieces are matching color is win
     for( let i = allColumns.length - 1  ; i >= 0; i --){
         if(allColumns[i].classList.contains(currentPlayer)){
-            total += 1;
+            total ++;
             console.log(total,currentPlayer)
             if (total === 4){
                 setWinner();
                 break;
+            }else{
+                checkFullBoard();
             }
         }else{
             total = 0 ;
@@ -141,10 +144,11 @@ function checkWinner(colNum, rowNum){
     const allRows = document.querySelectorAll(`.row-${rowNum}`); // c is row number
     console.log(allRows)
 
+    total = 0
     //loop each element to check 4 peices are matching color is win
     for (let r = 0; r < allRows.length ; r++){
         if(allRows[r].classList.contains(currentPlayer)){
-            total += 1;
+            total ++ ;
             if (total === 4){
                 setWinner();
                 break;
@@ -153,7 +157,6 @@ function checkWinner(colNum, rowNum){
             total = 0 ;
         }
     }
-
 
 
     //TODO diagonal - bottom left to top right
@@ -167,8 +170,8 @@ function checkWinner(colNum, rowNum){
 
     //find the most bottom left cordinate (the first peice)
     while (row < 5 && col > 0){
-        row += 1;
-        col -= 1;
+        row ++ ;
+        col -- ;
     }
 
     //get the first piece element with row and column class
@@ -179,41 +182,16 @@ function checkWinner(colNum, rowNum){
     // get list of element for diagonal line without null element
     while (firstPiece != null){
         diagonalArray.push(firstPiece)
-        row -= 1;
-        col += 1;
+        row --;
+        col ++;
         firstPiece = document.querySelector(`.row-${row}.col-${col}`);
     }
 
 
-
-    //TODO anti diagonal - bottom right to top left
-    //assign new variable to keep row and column number of current piece.
-    let antiRow = rowNum
-    let antiCol = Number(colNum)
-
-    //find the most bottom right to top left cordinate ( the first anti diagonal peice)
-    while( antiRow < 5 && antiCol < 6){
-        antiRow += 1;
-        antiCol += 1;
-    }
-
-    //get the first anti diagonal piece element with row and column class
-    let firstAntiDiagonalPiece = document.querySelector(`.row-${antiRow}.col-${antiCol}`);
-    console.log(`%c--anti first peice--`,`color:yellow`);
-    console.log(firstAntiDiagonalPiece)
-
-    // get list of element for anti diagonal line without null element
-    while(firstAntiDiagonalPiece != null){
-        diagonalArray.push(firstAntiDiagonalPiece);
-        antiRow -= 1;
-        antiCol -= 1;
-        firstAntiDiagonalPiece = document.querySelector(`.row-${antiRow}.col-${antiCol}`);
-    }
-
-    //* CHECK WINNER FOR BOTH DIRECTIONS
+    total = 0
     for( let i = 0 ; i < diagonalArray.length ; i ++){
         if(diagonalArray[i].classList.contains(currentPlayer)){
-            total += 1;
+            total ++;
             if (total === 4){
                 setWinner();
                 break;
@@ -223,6 +201,44 @@ function checkWinner(colNum, rowNum){
         }
     }
 
+    //TODO anti diagonal - bottom right to top left
+    //assign new variable to keep row and column number of current piece.
+    let antiRow = rowNum
+    let antiCol = Number(colNum)
+
+    //find the most bottom right to top left cordinate ( the first anti diagonal peice)
+    while( antiRow < 5 && antiCol < 6){
+        antiRow ++;
+        antiCol ++;
+    }
+
+    //get the first anti diagonal piece element with row and column class
+    let firstAntiDiagonalPiece = document.querySelector(`.row-${antiRow}.col-${antiCol}`);
+    console.log(`%c--anti first peice--`,`color:yellow`);
+    console.log(firstAntiDiagonalPiece)
+
+    const antiDiagonalArray =  [];
+    // get list of element for anti diagonal line without null element
+    while(firstAntiDiagonalPiece != null){
+        antiDiagonalArray.push(firstAntiDiagonalPiece);
+        antiRow --;
+        antiCol --;
+        firstAntiDiagonalPiece = document.querySelector(`.row-${antiRow}.col-${antiCol}`);
+    }
+
+    
+    total = 0
+    for( let i = 0 ; i < antiDiagonalArray.length ; i ++){
+        if(antiDiagonalArray[i].classList.contains(currentPlayer)){
+            total ++;
+            if (total === 4){
+                setWinner();
+                break;
+            }
+        }else{
+            total = 0 ;
+        }
+    }
 }
 
 function setWinner(){
@@ -232,15 +248,33 @@ function setWinner(){
     })
 }
 
+//check fullBoard
+function checkFullBoard(){
+    let totalCheck = 0;
+    const fullBoard = document.querySelectorAll('.board');
+    fullBoard.forEach(item =>{
+        if (item.classList.contains('red') || item.classList.contains('yellow')){
+            totalCheck ++;
+            console.log(totalCheck, "T")
+            if (totalCheck === 42){
+                winner.textContent= 'NO ONE WINS';
+            }
+        }
+    });
+    
+}
+
 
 //get the reset button
 function resetButton(){
    const board = document.querySelectorAll('.board');
-   console.log(board)
    board.forEach(item =>{
-    item.classList.remove('red','yellow');
-   })
-    console.log('remove')
+        item.classList.remove('red','yellow');
+   });
+   buttons.forEach(btn =>{
+        btn.disabled = false;
+   });
+   winner.textContent = '';
 }
 
 const resetBtn = document.getElementById('reset');
