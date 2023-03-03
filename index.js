@@ -64,7 +64,7 @@ buttons.forEach(button =>{
             {transform: "translateY(300px)"},
         ],
         {
-            duration:700,
+            duration:600,
             iterations: 1,
         }
         )
@@ -247,6 +247,8 @@ function resetButton(){
         btn.disabled = false;
    });
    winner.textContent = '';
+   const getPlayer = document.getElementById('nextPlayer');
+   getPlayer.textContent = '';
 }
 
 //add event for button
