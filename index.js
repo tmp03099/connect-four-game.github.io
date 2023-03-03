@@ -4,15 +4,6 @@ const player1 = 'red';
 const player2 = 'blue';
 
 let currentPlayer = player1;
-// const color = document.querySelectorAll('.color');
-// color.forEach(item =>{
-//     item.addEventListener('click', function(event){
-//         event.target.classList[0] = currentPlayer;
-//         return currentPlayer
-//         console.log(currentPlayer)
-//     })
-// })
-
 
 //selector element
 const body = document.querySelector('body');
