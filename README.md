@@ -38,7 +38,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information
 
 ## Contact
 My Phung Tieu - [LinkedIn](https://www.linkedin.com/in/my-phung-tieu-0bba22219/) - [Github](https://github.com/tmp03099)
+Project Link - 
 
 ## Acknowledgements
-
+- [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
+- [DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList)
+- [CSS Grid Layout](https://www.w3schools.com/css/css_grid.asp)
+- [Diagonal](https://www.geeksforgeeks.org/return-an-array-of-anti-diagonals-of-given-nn-square-matrix/)
+- [GitHub Pages](https://pages.github.com/)
+- [Font Awesome](https://fontawesome.com/icons)
+- [Google Font](https://fonts.google.com/)
 
