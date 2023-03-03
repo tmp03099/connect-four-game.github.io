@@ -11,51 +11,45 @@ const girdboardGame = document.getElementById('grid-board-game');
 const winner = document.getElementById('winner');
 
 //create board game
-//For each row create 7 columns to get the match column id
+//For each column create 6 rows to get the match column id
 function boardGame(){
-    for (let r = 0; r < 6; r++){
-        for(let c = 0; c < 7; c++){
-            const div = document.createElement('div');
-            div.classList.add('board')
-            div.classList.add(`row-${r}`);
-            div.classList.add(`col-${c}`);
-            div.id = `${r}${c}` 
-            girdboardGame.appendChild(div);
-        }
-    }
-}
+    for(let c = 0; c < 7; c++){
 
-
-//create top board game to user control
-function topBoardGame(){
-    for (let i = 0; i < 7; i++){
-        //create div, class and id
-        const divOnTop = document.createElement('div');
-        divOnTop.classList.add('top-board');
+        const container = document.createElement('div');
+        container.classList.add('container');
 
         //add button to select
         const btn = document.createElement('button');
         btn.classList.add('select-button');
         btn.innerHTML = '<i class="fa-solid fa-circle-arrow-down"></i>';
-        btn.id = `button-${i}`;
-        divOnTop.appendChild(btn);
-        girdboardGame.appendChild(divOnTop)
+        btn.id = `button-${c}`;
+        container.appendChild(btn);
+
+        for (let r = 0; r < 6; r++){
+            const div = document.createElement('div');
+            div.classList.add('board')
+            div.classList.add(`row-${r}`);
+            div.classList.add(`col-${c}`);
+            div.id = `${r}${c}` 
+
+            container.appendChild(div);
+        }
+
+        girdboardGame.appendChild(container);
     }
 }
 
 //call function
 body.appendChild(girdboardGame);
-topBoardGame();
 boardGame();
 
 //Find which selected button
 const buttons = document.querySelectorAll('.select-button');
 
-//loop button and addEventListener for click event 
+// loop button and addEventListener for click event 
 buttons.forEach(button =>{
 
     button.addEventListener('click', function(){
-
         //When clicked the current piece will show on the board game
         //call function currentPiece 
         console.log(this.id)
@@ -70,7 +64,7 @@ buttons.forEach(button =>{
             {transform: "translateY(300px)"},
         ],
         {
-            duration:1000,
+            duration:700,
             iterations: 1,
         }
         )
@@ -103,7 +97,6 @@ function putPiece (btnID){
 
     //loop from botton to top to check where to put the piece
     for (rowNum ; rowNum >= 0 ; rowNum--){
-
         if (!colSelected[rowNum].classList.contains('red') && !colSelected[rowNum].classList.contains('blue') ){
             colSelected[rowNum].classList.add(currentPlayer);
             console.log(currentPlayer,"orgin");
@@ -130,15 +123,17 @@ function putPiece (btnID){
            rowNum as a row number of current piece
 */
 function checkWinner(colNum, rowNum){
-
+    console.log('checkWinner', colNum, rowNum);
     // TODO vertical
     //get list element from the column number 
     const allColumns = document.querySelectorAll(`.col-${colNum}`);
+    console.log(`%c--check column--`,`color:yellow`);
     checkMatchingColor(allColumns)
 
     //TODO horizontal
     //get list element from the row number
-    const allRows = document.querySelectorAll(`.row-${rowNum}`); // c is row number
+    const allRows = document.querySelectorAll(`.row-${rowNum}`); 
+    console.log(`%c--check row--`,`color:yellow`);
     checkMatchingColor(allRows)
     
    
@@ -208,6 +203,7 @@ function setWinner(){
 }
 
 function checkMatchingColor(arrList){
+    console.log(arrList);
     let total = 0;
     //loop each element to check 4 peices are matching color is win
     for( let i = 0 ; i < arrList.length ; i ++){
@@ -266,3 +262,17 @@ function nextPlayer(nextPlayer){
     getPlayer.style.fontSize = '20px';
     getPlayer.style.padding = '2% 5%';
 }
+
+//show highlight column when mouse hover
+const containers = document.querySelectorAll('.container');
+containers.forEach(item => {
+    item.addEventListener('mouseover', () => {
+        item.classList.add('hover');
+    })
+
+    item.addEventListener('mouseout', () => {
+        item.classList.remove('hover');
+    })
+})
+
+
