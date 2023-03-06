@@ -1,7 +1,7 @@
 # CONNECT FOUR GAME
-> Connect four is one of popular board game with a lot of fun that can be played with family, friend and child.
+> Connect four is one of popular board game with a lot of fun that can be played with family, friend and child :older_adult::woman::child:.
 
-This is web version of the game where two players can take turn and play the game until a winner is decided. 
+[Connect Four](https://tmp03099.github.io/connect-four-game.github.io/) - This is a web version of the game where two players can take turn and play the game until a winner is decided. 
 
 ### How To Play
 This a two player board game. Each player will take turn to play a colored peice in the board by dropping it fromt the top. 
@@ -17,7 +17,7 @@ The winner is the first player who connected four peices of the same colored eit
 ## Getting Started
 
 ### Installation
-1. Clone the repo
+- Clone the repo
 ```
 git clone https://github.com/tmp03099/connect-four-game.github.io
 ```
@@ -29,8 +29,10 @@ Viewing the page and play game by open `index.html` in your browser
 Distributed under the MIT License. See `LICENSE.txt` for more information
 
 ## Contact
-My Phung Tieu - [LinkedIn](https://www.linkedin.com/in/my-phung-tieu-0bba22219/) - [Github](https://github.com/tmp03099)
-Project Link - 
+My Phung Tieu - [LinkedIn](https://www.linkedin.com/in/my-phung-tieu-0bba22219/) - [Github](https://github.com/tmp03099):heart_eyes:
+
+
+Project Link - [Connect Four](https://tmp03099.github.io/connect-four-game.github.io/) :smiley:
 
 ## Acknowledgements
 - [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
