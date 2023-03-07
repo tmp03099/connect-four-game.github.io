@@ -217,6 +217,11 @@ function checkMatchingColor(arrList){
 
 
 function setWinner(){
+    if (currentPlayer === 'red'){
+        winner.style.color = 'orangered';
+    }else{
+        winner.style.color = 'blue';
+    }
     winner.textContent = (`${currentPlayer.toUpperCase()} PLAYER WINS`);
     buttons.forEach(btn =>{
         btn.disabled = true;
