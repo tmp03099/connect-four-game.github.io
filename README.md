@@ -52,7 +52,7 @@ Project Link - [Connect Four](https://tmp03099.github.io/connect-four-game.githu
 - [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
 - [DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList)
 - [CSS Grid Layout](https://www.w3schools.com/css/css_grid.asp)
-- [Matrix Diagonally]((https://www.javatpoint.com/print-matrix-diagonally-in-java)
+- [Matrix Diagonally](https://www.javatpoint.com/print-matrix-diagonally-in-java)
 - [Diagonal](https://www.geeksforgeeks.org/return-an-array-of-anti-diagonals-of-given-nn-square-matrix/)
 - [GitHub Pages](https://pages.github.com/)
 - [Font Awesome](https://fontawesome.com/icons)
