@@ -40,7 +40,7 @@ Viewing the page and play game by open `index.html` in your browser
 
 [ ] Time set
 
-[ ] User can choose their color
+[ ] Mobile version
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information
