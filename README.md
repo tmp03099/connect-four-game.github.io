@@ -1,7 +1,7 @@
 # CONNECT FOUR GAME
 > Connect four is one of popular board game with a lot of fun that can be played with family, friend and child :older_adult::woman::child:.
 
-### About
+## About
 [Connect Four](https://tmp03099.github.io/connect-four-game.github.io/) - This is a web version of the game where two players can take turn and play the game until a winner is decided. 
 
 ### Main Features
