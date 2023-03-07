@@ -4,7 +4,7 @@
 ### About
 [Connect Four](https://tmp03099.github.io/connect-four-game.github.io/) - This is a web version of the game where two players can take turn and play the game until a winner is decided. 
 
-#### Main Features
+### Main Features
 - Responsive Design
 - Two differents color for each player
 - Showing who will next player
