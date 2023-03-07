@@ -1,7 +1,17 @@
 # CONNECT FOUR GAME
 > Connect four is one of popular board game with a lot of fun that can be played with family, friend and child :older_adult::woman::child:.
 
+### About
 [Connect Four](https://tmp03099.github.io/connect-four-game.github.io/) - This is a web version of the game where two players can take turn and play the game until a winner is decided. 
+
+#### Main Features
+- Responsive Design
+- Two differents color for each player
+- Showing who will next player
+- Showing who will win
+
+![image](https://user-images.githubusercontent.com/84693135/223513953-dd0c7fac-bc82-4dce-ac6b-c3e409119cf6.png)
+
 
 ### How To Play
 This a two player board game. Each player will take turn to play a colored peice in the board by dropping it from bottom to the top. 
@@ -24,6 +34,11 @@ git clone https://github.com/tmp03099/connect-four-game.github.io
 
 ## Usage
 Viewing the page and play game by open `index.html` in your browser
+
+## Roadmap
+[ ] Winner matching color with player
+[ ] Time set
+[ ] User can choose their color
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information
