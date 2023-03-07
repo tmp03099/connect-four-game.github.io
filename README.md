@@ -1,12 +1,12 @@
 # CONNECT FOUR GAME
-> Connect four is one of famous board game with tremendous amount of fun that can be played with family, friend and child.
+> Connect four is one of popular board game with a lot of fun that can be played with family, friend and child :older_adult::woman::child:.
 
+[Connect Four](https://tmp03099.github.io/connect-four-game.github.io/) - This is a web version of the game where two players can take turn and play the game until a winner is decided. 
 
 ### How To Play
-This product design based on a turn between 2-player game. Each player places their checkers from the bottom to the top of board game.
-Player must alternate turn and only one disc can be dropped in each turn. 
-Winner will be the first player who connect four peices of the same colored either horizontally, vertically, or diagonally.
-If the board is full you can play again.
+This a two player board game. Each player will take turn to play a colored peice in the board by dropping it fromt the top. 
+The winner is the first player who connected four peices of the same colored either horizontally, vertically, or diagonally.
+
 
 ### Build With
 - ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -14,31 +14,33 @@ If the board is full you can play again.
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 
-
 ## Getting Started
-This is an example of how you may give instructions on setting up your project locally. To get a local copy up and running follow these simple example steps.
-
-### Prerequisties
-This is an example of how to list things you need to use the software and how to install them.
-
-..* npm
-
 
 ### Installation
+- Clone the repo
+```
+git clone https://github.com/tmp03099/connect-four-game.github.io
+```
 
 ## Usage
-
-## Roadmap
-
-## Contributing
-
+Viewing the page and play game by open `index.html` in your browser
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information
 
 ## Contact
-My Phung Tieu - [LinkedIn](https://www.linkedin.com/in/my-phung-tieu-0bba22219/) - [Github](https://github.com/tmp03099)
+My Phung Tieu - [LinkedIn](https://www.linkedin.com/in/my-phung-tieu-0bba22219/) - [Github](https://github.com/tmp03099):heart_eyes:
+
+
+Project Link - [Connect Four](https://tmp03099.github.io/connect-four-game.github.io/) :smiley:
 
 ## Acknowledgements
-
+- [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
+- [DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList)
+- [CSS Grid Layout](https://www.w3schools.com/css/css_grid.asp)
+- [Connect4 Project](https://github.com/ImKennyYip/Connect4/blob/master/connect4.js)
+- [Diagonal](https://www.geeksforgeeks.org/return-an-array-of-anti-diagonals-of-given-nn-square-matrix/)
+- [GitHub Pages](https://pages.github.com/)
+- [Font Awesome](https://fontawesome.com/icons)
+- [Google Font](https://fonts.google.com/)
 
