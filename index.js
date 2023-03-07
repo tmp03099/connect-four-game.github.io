@@ -83,6 +83,8 @@ function putPiece (btnID){
 
     //select element by ID with buttonID parameter
     const selectedBtn = document.getElementById(btnID);
+    console.log(`%c--selectedBtn--`,`color:yellow`);
+    console.log(selectedBtn)
 
     //get the last character in the id of selectedBtn.  This is the column number 
     const colNum = selectedBtn.id.slice(-1);
@@ -127,13 +129,11 @@ function checkWinner(colNum, rowNum){
     // TODO vertical
     //get list element from the column number 
     const allColumns = document.querySelectorAll(`.col-${colNum}`);
-    console.log(`%c--check column--`,`color:yellow`);
     checkMatchingColor(allColumns)
 
     //TODO horizontal
     //get list element from the row number
     const allRows = document.querySelectorAll(`.row-${rowNum}`); 
-    console.log(`%c--check row--`,`color:yellow`);
     checkMatchingColor(allRows)
     
    
@@ -195,12 +195,6 @@ function checkWinner(colNum, rowNum){
     checkMatchingColor(antiDiagonalArray);
 }
 
-function setWinner(){
-    winner.textContent = (`${currentPlayer.toUpperCase()} PLAYER WINS`);
-    buttons.forEach(btn =>{
-        btn.disabled = true;
-    })
-}
 
 function checkMatchingColor(arrList){
     console.log(arrList);
@@ -220,6 +214,15 @@ function checkMatchingColor(arrList){
         }
     }
 }
+
+
+function setWinner(){
+    winner.textContent = (`${currentPlayer.toUpperCase()} PLAYER WINS`);
+    buttons.forEach(btn =>{
+        btn.disabled = true;
+    })
+}
+
 
 //check fullBoard
 function checkFullBoard(){
