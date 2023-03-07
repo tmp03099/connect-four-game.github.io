@@ -37,7 +37,9 @@ Viewing the page and play game by open `index.html` in your browser
 
 ## Roadmap
 [ ] Winner matching color with player
+
 [ ] Time set
+
 [ ] User can choose their color
 
 ## License
