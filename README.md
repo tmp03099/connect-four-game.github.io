@@ -10,8 +10,6 @@
 - Showing who will next player
 - Showing who will win
 
-![image](https://user-images.githubusercontent.com/84693135/223513953-dd0c7fac-bc82-4dce-ac6b-c3e409119cf6.png)
-
 
 ### How To Play
 This a two player board game. Each player will take turn to play a colored peice in the board by dropping it from bottom to the top. 
