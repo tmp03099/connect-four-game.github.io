@@ -4,7 +4,7 @@
 [Connect Four](https://tmp03099.github.io/connect-four-game.github.io/) - This is a web version of the game where two players can take turn and play the game until a winner is decided. 
 
 ### How To Play
-This a two player board game. Each player will take turn to play a colored peice in the board by dropping it fromt the top. 
+This a two player board game. Each player will take turn to play a colored peice in the board by dropping it from bottom to the top. 
 The winner is the first player who connected four peices of the same colored either horizontally, vertically, or diagonally.
 
 
