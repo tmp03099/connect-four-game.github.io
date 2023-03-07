@@ -34,7 +34,7 @@ git clone https://github.com/tmp03099/connect-four-game.github.io
 Viewing the page and play game by open `index.html` in your browser
 
 ## Roadmap
-[ ] Winner matching color with player
+[x] Winner matching color with player
 
 [ ] Time set
 
