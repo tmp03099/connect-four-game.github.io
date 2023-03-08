@@ -35,8 +35,6 @@ Viewing the page and play game by open `index.html` in your browser
 
 ## Roadmap
 
-[ ] Time set
-
 [ ] Mobile version
 
 ## License
