@@ -9,6 +9,8 @@ let currentPlayer = player1;
 let timeRemaining = 30;
 let timerInterval; //null
 const timer = document.getElementById('timer');
+const audio = new Audio('stone-dropping-6843.mp3');
+const winingAudio = new Audio('Tada-sound.mp3');
 
 //selector element
 const body = document.querySelector('body');
@@ -57,6 +59,7 @@ buttons.forEach(button =>{
     button.addEventListener('click', function(){
         //When clicked the current piece will show on the board game
         //call function currentPiece 
+        audio.play()
         console.log(this.id)
         putPiece(this.id);
         timeRemaining = 30;
@@ -231,6 +234,7 @@ function setWinner(){
     }else{
         winner.style.color = 'blue';
     }
+    winingAudio.play();
     winner.textContent = (`${currentPlayer.toUpperCase()} PLAYER WINS`);
     buttons.forEach(btn =>{
         btn.disabled = true;
@@ -239,6 +243,8 @@ function setWinner(){
     //stop timer
     clearInterval(timerInterval);
     timer.innerHTML = 0;
+
+    
 }
 
 
