@@ -19,6 +19,13 @@ p{
   padding: 0 10%;
 }
 
+.time{
+  font-family: 'Silkscreen';
+  font-size: 1.3em;
+  line-height: 2em;
+  padding: 0 10%;
+}
+
 #grid-board-game {
   display: grid;
   grid-template-columns: 7vw 7vw 7vw 7vw 7vw 7vw 7vw ;

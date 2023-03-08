@@ -5,6 +5,11 @@ const player2 = 'blue';
 
 let currentPlayer = player1;
 
+//set time
+let timeRemaining = 30;
+let timerInterval; //null
+const timer = document.getElementById('timer');
+
 //selector element
 const body = document.querySelector('body');
 const girdboardGame = document.getElementById('grid-board-game');
@@ -54,6 +59,10 @@ buttons.forEach(button =>{
         //call function currentPiece 
         console.log(this.id)
         putPiece(this.id);
+        timeRemaining = 30;
+        if (timerInterval == null){
+            timeStart();
+        }
         
     });
     button.addEventListener('mouseup',function(){ 
@@ -217,8 +226,8 @@ function checkMatchingColor(arrList){
 
 
 function setWinner(){
-    if (currentPlayer === 'red'){
-        winner.style.color = 'orangered';
+    if (currentPlayer === player1){
+        winner.style.color ='orangered';
     }else{
         winner.style.color = 'blue';
     }
@@ -226,6 +235,10 @@ function setWinner(){
     buttons.forEach(btn =>{
         btn.disabled = true;
     })
+
+    //stop timer
+    clearInterval(timerInterval);
+    timer.innerHTML = 0;
 }
 
 
@@ -257,6 +270,11 @@ function resetButton(){
    winner.textContent = '';
    const getPlayer = document.getElementById('nextPlayer');
    getPlayer.textContent = '';
+
+   //stop timer
+   clearInterval(timerInterval);
+   timer.innerHTML = 0;
+   timerInterval = null; //to clear old id
 }
 
 //add event for button
@@ -284,5 +302,38 @@ containers.forEach(item => {
         item.classList.remove('hover');
     })
 })
+
+
+
+
+//checkTime timer
+function checkTime(){
+    
+    timer.innerHTML = timeRemaining
+    if (timeRemaining <= 0){
+        timer.innerHTML = "Times up";
+        if (currentPlayer === player1){
+            winner.style.color ='blue';
+            winner.textContent = `${player2.toUpperCase()} WIN`;
+        }else{
+            winner.style.color ='orangered';
+            winner.textContent = `${player1.toUpperCase()} WIN`;
+        }
+
+    }else{
+        timeRemaining --;
+    }
+}
+
+
+//set timmer
+function timeStart(){
+
+    //setInterval function will be check N milliseconds ( 1 second = 1000ms)
+    timerInterval = setInterval(checkTime, 1000);
+    checkTime()
+    
+}
+
 
 
