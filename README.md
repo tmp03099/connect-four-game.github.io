@@ -8,8 +8,8 @@
 - Responsive Design
 - Two differents color for each player
 - Showing who will next player
-- Showing who will win
-
+- Showing who will win with matching color
+- Sound for winner and piece drop
 
 ### How To Play
 This a two player board game. Each player will take turn to play a colored peice in the board by dropping it from bottom to the top. 
